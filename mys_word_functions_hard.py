@@ -1,23 +1,20 @@
 
-def choose_difficulty(words_list):
-    new_list = []
-    missing_difficulty = True
-    while missing_difficulty:
-        difficulty = input("""Please choose a difficulty.
-        Press 1 for easy,
-        2 for normal,
-        or 3 for hard: """)
-        if difficulty == "1":
-            missing_difficulty = False
+import random
 
-        elif difficulty == "2":
-            missing_difficulty = False
-
-        elif difficulty == "3":
-            missing_difficulty = False
-
-        else:
-            print("Incorrect Entry.")
+def choose_difficulty(easy_list, normal_list, hard_list):
+    difficulty = input("""Please choose a difficulty.
+    Press 1 for easy,
+    2 for normal,
+    or 3 for hard: """)
+    if difficulty == "1":
+        return random.choice(easy_list).lower()
+    elif difficulty == "2":
+        return random.choice(normal_list).lower()
+    elif difficulty == "3":
+        return random.choice(hard_list).lower()
+    else:
+        print("Incorrect Entry.")
+        return choose_difficulty(easy_list, normal_list, hard_list)
 
 
 def display_word(correct_letters, rand_word):
