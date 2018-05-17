@@ -1,21 +1,17 @@
 
-def display_state(miss_count, display_word):
+def display_word(correct_letters, rand_word):
+    display_list = []
+    for char in rand_word:
+        if char in correct_letters:
+            display_list.append(char)
+        else:
+            display_list.append("_")
+    return "".join(display_list)
+
+def display_state(miss_count, correct_letters, rand_word):
     print("You have " + str(miss_count) + " misses remaining.")
-    print(display_word)
+    print(display_word(corrand_letters, rand_word))
     return
-
-def mod_display(guess, display_word):
-    display_list = list(display_word)
-    count = 0
-    return display_word
-
-
-def is_in_word(guess, rand_word, display_word):
-    if letter in rand_word:
-        display_word = mod_display(guess, display_word)
-        return display_word
-    else:
-        return display_word
 
 def request_guess(correct_letters, incorrect_letters):
     guess = input("Please guess a letter: ")
@@ -26,15 +22,12 @@ def request_guess(correct_letters, incorrect_letters):
         return guess
 
 
-
-
-def player_turn(rand_word, display_word, correct_letters, incorrect_letters, miss_count):
-    display_state(miss_count, display_word)
+def player_turn(rand_word, correct_letters, incorrect_letters, miss_count):
+    print(display_state(miss_count, correct_letters, rand_word))
     guess = request_guess(correct_letters, incorrect_letters)
-    if is_in_word(guess):
+    if guess in rand_word:
         print("Good guess, that letter is in the word.")
         correct_letters.append(guess)
-        display_word = mod_display(guess, display_word)
         return display_word, correct_letters, incorrect_letters, miss_count
     else:
         print("Sorry, that letter is not in the word.")
