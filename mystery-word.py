@@ -35,6 +35,7 @@ while True:
         break
     elif miss_count <= 0:
         print("I'm sorry, you've lost.")
+        print("The word was " + rand_word + ".")
         break
     else:
         print("Next turn.")
