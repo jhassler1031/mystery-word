@@ -2,14 +2,17 @@
 #connect to functions in separate file
 
 from mys_word_functions_hard import player_turn, display_word
-#The computer needs to choose a word at random
+import random
+
+#The computer needs to choose a word at random after player chooses difficulty
 
 with open("/usr/share/dict/words") as infile:
     words_list = infile.read()
 
 words_list = words_list.split()
 
-import random
+
+
 
 rand_word = random.choice(words_list).lower() #.lower to normalize
 
