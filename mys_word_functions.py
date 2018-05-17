@@ -17,7 +17,6 @@ def request_guess(correct_letters, incorrect_letters):
         return guess
 
 def player_turn(rand_word, correct_letters, incorrect_letters, miss_count):
-    #print(display_state(miss_count, correct_letters, rand_word))
     guess = request_guess(correct_letters, incorrect_letters)
     if guess in rand_word:
         print("Good guess, that letter is in the word.")
