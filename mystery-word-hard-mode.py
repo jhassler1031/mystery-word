@@ -1,8 +1,7 @@
 
 #connect to functions in separate file
 
-from mys_word_functions_hard import player_turn, display_word
-import random
+from mys_word_functions_hard import player_turn, display_word, choose_difficulty
 
 #The computer needs to choose a word at random after player chooses difficulty
 
@@ -11,10 +10,21 @@ with open("/usr/share/dict/words") as infile:
 
 words_list = words_list.split()
 
+#Create different list per difficulty
 
+easy_list = []
+normal_list = []
+hard_list = []
 
+for item in words_list:
+    if len(item) >= 4 and len(item) <= 6:
+        easy_list.append(item)
+    elif len(item) > 6 and len(item) <= 10:
+        normal_list.append(item)
+    elif len(item) > 10:
+        hard_list.append(item)
 
-rand_word = random.choice(words_list).lower() #.lower to normalize
+rand_word = choose_difficulty(easy_list, normal_list, hard_list)
 
 #Now we have a random word.  Need to create the display word
 
@@ -40,9 +50,14 @@ while wants_to_play:
             break
         elif miss_count <= 0:
             print("I'm sorry, you've lost.")
+            print("The word was " + rand_word + ".")
             break
         else:
             print("Next turn.")
     answer = input("Would you like to play again? Y or N: ")
-    if answer.lower() != "y":
+    if answer.lower() == "y":
+        correct_letters = []
+        incorrect_letters = []
+        rand_word = choose_difficulty(easy_list, normal_list, hard_list)
+    else:
         wants_to_play = False
