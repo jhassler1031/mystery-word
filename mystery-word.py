@@ -33,7 +33,7 @@ while True:
     if rand_word == display_word(correct_letters, rand_word):
         print("Congratulations!  You've won!")
         break
-    elif miss_count == 0:
+    elif miss_count <= 0:
         print("I'm sorry, you've lost.")
         break
     else:
