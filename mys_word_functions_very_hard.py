@@ -1,7 +1,15 @@
 
 import random
 
-def det_word_diff(word, one_point, two_point, three_point, four_point, five_point, eight_point, ten_point):
+def det_word_diff(word):
+    #point values based on scrabble https://en.wikipedia.org/wiki/Scrabble_letter_distributions
+    one_point = ["e", "a", "i", "o", "n", "r", "t", "l", "s", "u"]
+    two_point = ["d", "g"]
+    three_point = ["b", "c", "m", "p"]
+    four_point = ["f", "h", "v", "w", "y"]
+    five_point = ["k"]
+    eight_point = ["j", "x"]
+    ten_point = ["q", "z"]
     word_diff = 0
     for letter in word:
         if letter in one_point:
@@ -68,3 +76,86 @@ def player_turn(rand_word, correct_letters, incorrect_letters, miss_count):
         incorrect_letters.append(guess)
         miss_count -= 1
         return correct_letters, incorrect_letters, miss_count
+
+def hangman(miss_count):
+    if miss_count == 8:
+        return """
+        |
+        |
+        |
+        |
+        |
+        |__________
+        """
+    elif miss_count == 7:
+        return """
+        |-----
+        |
+        |
+        |
+        |
+        |__________
+        """
+    elif miss_count == 6:
+        return """
+        |-----
+        |     |
+        |
+        |
+        |
+        |__________
+        """
+    elif miss_count == 5:
+        return """
+        |-----
+        |     |
+        |     O
+        |
+        |
+        |__________
+        """
+    elif miss_count == 4:
+        return """
+        |-----
+        |     |
+        |     O
+        |     |
+        |
+        |__________
+        """
+    elif miss_count == 3:
+        return """
+        |-----
+        |     |
+        |     O
+        |    /|
+        |
+        |__________
+        """
+    elif miss_count == 2:
+        return """
+        |-----
+        |     |
+        |     O
+        |    /|\\
+        |
+        |__________
+        """
+    elif miss_count == 1:
+        return """
+        |-----
+        |     |
+        |     O
+        |    /|\\
+        |    /
+        |__________
+        """
+    else:
+        return """
+        |-----
+        |     |
+        |     O
+        |    /|\\
+        |    / \\
+        |__________
+        """
