@@ -12,6 +12,7 @@ def det_word_diff(word):
     ten_point = ["q", "z"]
     word_diff = 0
     for letter in word:
+        letter = letter.lower()
         if letter in one_point:
             word_diff += 1
         elif letter in two_point:
