@@ -3,8 +3,6 @@
 
 from mys_word_functions_very_hard import *
 
-#The computer needs to choose a word at random after player chooses difficulty
-
 with open("/usr/share/dict/words") as infile:
     words_list = infile.read()
 
@@ -28,8 +26,6 @@ for item in words_list:
         hard_list.append(item)
 
 rand_word = choose_difficulty(easy_list, normal_list, hard_list)
-
-#Now we have a random word.  Need to create the display word
 
 word_length = len(rand_word)
 miss_count = 8
