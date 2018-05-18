@@ -56,6 +56,7 @@ while wants_to_play:
             print("Next turn.")
     answer = input("Would you like to play again? Y or N: ")
     if answer.lower() == "y":
+        miss_count = 8
         correct_letters = []
         incorrect_letters = []
         rand_word = choose_difficulty(easy_list, normal_list, hard_list)
