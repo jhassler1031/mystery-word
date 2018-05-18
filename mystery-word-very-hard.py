@@ -1,7 +1,7 @@
 
 #connect to functions in separate file
 
-from mys_word_functions_very_hard import player_turn, display_word, choose_difficulty, det_word_diff
+from mys_word_functions_very_hard import *
 
 #The computer needs to choose a word at random after player chooses difficulty
 
@@ -47,6 +47,7 @@ while wants_to_play:
         print("You have " + str(miss_count) + " misses remaining.")
         print(display_word(correct_letters, rand_word))
         correct_letters, incorrect_letters, miss_count = player_turn(rand_word, correct_letters, incorrect_letters, miss_count)
+        print(hangman(miss_count))
 
         if rand_word == display_word(correct_letters, rand_word):
             print("Congratulations!  You've won!")
